@@ -20,7 +20,7 @@ const todoSlice = createSlice({
   reducers: {
     addTask: (state, action) => {
       const newTodo = {
-        id: Date.now(),
+        id: Math.random(),
         title: action.payload.title,
         completed: false,
       };
