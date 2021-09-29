@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { addTask } from "../redux/todoSlice";
 
 const AddTodoForm = () => {
-  const [value, setValue] = useState();
+  const [value, setValue] = useState("");
   const dispatch = useDispatch();
 
   const onSubmit = (event) => {
@@ -12,10 +12,13 @@ const AddTodoForm = () => {
       addTask({
         title: value,
       })
-    );
+      );
+      setValue("");
   };
 
   return (
+    <div>
+    <h1 className="mt-3 text-center">My ToDo List</h1>
     <form onSubmit={onSubmit} className="form-inline mt-3 mb-3">
       <label className="mt-1">New Task</label>
       <input
@@ -26,10 +29,11 @@ const AddTodoForm = () => {
         onChange={(event) => setValue(event.target.value)}
       ></input>
 
-      <button type="submit" className="btn btn-info mb-2">
-        Upload
+      <button type="submit" className="btn btn-info mb-2" disabled={!value}>
+        Create
       </button>
     </form>
+    </div>
   );
 };
 

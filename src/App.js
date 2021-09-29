@@ -1,27 +1,33 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import AddTodoForm from "./components/AddTodoForm";
 import TodoList from "./components/TodoList";
 import TotalCompleteItems from "./components/TotalCompleteItems";
+import Login from "./components/Login";
+import Logout from "./components/Logout";
 
 const App = () => {
+  const user = useSelector((state) => state.user.user);
+
+  //todos
   return (
     <div className="container">
-      <div className="row">
-        <div className="col-lg-6 offset-lg-3">
-          <h1 className="mt-3 text-center">My ToDo List</h1>
-          <div className="card bg-light m-2 p-3">
+      {user ? (
+        <div className="row">
+          <div className="col-lg-6 offset-lg-3">
+            <Logout />
             <AddTodoForm />
-            <TodoList />
             <TotalCompleteItems />
+            <TodoList />
           </div>
         </div>
-      </div>
+      ) : (
+        <Login />
+      )}
     </div>
   );
 };
 
 export default App;
-
-//style={{backgroundColor:"grey"}}

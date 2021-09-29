@@ -12,7 +12,7 @@ const TodoList = () => {
   }, [dispatch]);
 
   return (
-    <ul className="list-group">
+    <ul className="list-group mb-2">
       {todos.map((todo) => (
         <TodoItem
           key={todo.id}
