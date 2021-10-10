@@ -1,16 +1,23 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { taskComplete, deleteTask } from "../redux/todoSlice";
+import {
+  taskComplete,
+  deleteTask,
+  completedTask,
+  deleteAsyncTask,
+} from "../redux/todoSlice";
 
 const TodoItem = ({ userId, id, title, completed }) => {
   const dispatch = useDispatch();
 
   const handleComplete = () => {
-    dispatch(taskComplete({ id: id, completed: !completed }));
+    // dispatch(taskComplete({ id: id, completed: !completed }));
+    dispatch(completedTask({ id: id, completed: !completed }));
   };
 
   const handleDelete = () => {
-    dispatch(deleteTask({ id: id }));
+    // dispatch(deleteTask({ id: id }));
+    dispatch(deleteAsyncTask({ id: id }));
   };
 
   return (
@@ -26,7 +33,9 @@ const TodoItem = ({ userId, id, title, completed }) => {
           ></input>
           {title}
         </span>
-        <button onClick={handleDelete} className="btn btn-danger">Delete</button>
+        <button onClick={handleDelete} className="btn btn-danger">
+          Delete
+        </button>
       </div>
     </li>
   );

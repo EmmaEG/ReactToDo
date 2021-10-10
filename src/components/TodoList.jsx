@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getAllTasks } from "../redux/todoSlice";
 
 import TodoItem from "./TodoItem";
-import Pagination from './Pagination'
+import Pagination from "./Pagination";
 
 const TodoList = () => {
   const dispatch = useDispatch();
@@ -31,8 +31,12 @@ const TodoList = () => {
           title={todo.title}
           completed={todo.completed}
         />
-        ))}
-        <Pagination tasksPerPage={tasksPerPage} totalTasks={todos.length} paginate={paginate} />
+      ))}
+      <Pagination
+        tasksPerPage={tasksPerPage}
+        totalTasks={todos.length}
+        paginate={paginate}
+      />
     </ul>
   );
 };

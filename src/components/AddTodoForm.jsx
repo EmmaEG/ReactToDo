@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addTask } from "../redux/todoSlice";
+import { addTask, createTask } from "../redux/todoSlice";
 
 const AddTodoForm = () => {
   const [value, setValue] = useState("");
@@ -9,7 +9,10 @@ const AddTodoForm = () => {
   const onSubmit = (event) => {
     event.preventDefault();
     dispatch(
-      addTask({
+      // addTask({
+      //   title: value,
+      // })
+      createTask({
         title: value,
       })
       );
